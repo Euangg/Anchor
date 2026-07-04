@@ -2,6 +2,14 @@ class_name Player
 extends CharacterBody2D
 const HOOK = preload("uid://cu87ycytrkccp")
 
+enum Direction{LEFT=-1,RIGHT=1}
+@onready var graphic: Node2D = $Graphic
+@export var direction:Direction=Direction.RIGHT:
+	set(v):
+		direction=v
+		if not is_node_ready():await ready
+		graphic.scale.x=direction
+
 @onready var hand: Node2D = $Hand
 
 const gravity:float=10000
@@ -25,11 +33,15 @@ func _physics_process(delta: float) -> void:
 	if joy_right.length_squared()<0.5:pass
 	else:dir_hand=joy_right.normalized()
 	
-	hand.rotation=dir_hand.angle()	
+	hand.rotation=dir_hand.angle()
 	
 	var input=Input.get_vector("a","d","w","s")
 	velocity=input*500
 	velocity.y+=gravity*delta
+	
+	var input_x=Input.get_axis("a","d")
+	if is_zero_approx(input_x):pass
+	else:direction=Direction.LEFT if input_x<0 else Direction.RIGHT
 	
 	if Input.is_action_just_pressed("tab"):drag_mode_once=!drag_mode_once
 	if Input.is_action_just_pressed("q"):auto_drag=!auto_drag
@@ -52,14 +64,23 @@ func _physics_process(delta: float) -> void:
 			if is_dragging:is_dragging=false
 			else:
 				if last_hook and (last_hook.velocity.is_zero_approx()):is_dragging=true
-		if is_dragging:drag(delta)
 	else:
-		if Input.is_action_pressed("mouse_right"):drag(delta)
-			
+		if Input.is_action_just_pressed("mouse_right"):is_dragging=true
+		if Input.is_action_just_released("mouse_right"):is_dragging=false
+	if is_dragging:drag(delta)
 	move_and_slide()
 
 func drag(delta):
 	if last_hook and (last_hook.velocity.is_zero_approx()):
 		var vec_hook_hand:Vector2=last_hook.global_position-hand.global_position
-		if vec_hook_hand.length_squared()<=100:velocity=Vector2.ZERO
+		if vec_hook_hand.length_squared()<=100:
+			velocity=Vector2.ZERO
+			global_position=last_hook.global_position-hand.position
 		else:velocity+=vec_hook_hand.normalized()*60000*delta
+		if last_hook.target_bit:
+			if last_hook.target_bit.get_collision_layer_value(11):
+				var duration_thing=last_hook.target_bit.get_parent()
+				duration_thing.durability-=delta
+				if duration_thing.durability<=0:
+					duration_thing.queue_free()
+					last_hook.back()

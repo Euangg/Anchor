@@ -25,6 +25,8 @@ Global="*uid://big1ckv0yn0a2"
 
 [display]
 
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -103,6 +105,8 @@ space={
 2d_physics/layer_6="body_enemy"
 2d_physics/layer_9="area_hook"
 2d_physics/layer_10="range_hook"
+2d_physics/layer_11="durability_hook"
+2d_physics/layer_12="trigger_hook"
 
 [physics]
 

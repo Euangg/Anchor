@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d4fdd3aed1cag"]
+
+[ext_resource type="Script" uid="uid://bpy1c6adpsv0q" path="res://0_level/0_prefab/hook_break.gd" id="1_ynlde"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vkqoe"]
+radius = 24.083189
+
+[node name="HookBreak" type="Node2D" unique_id=1698414225]
+script = ExtResource("1_ynlde")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1263888568]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=781823895]
+shape = SubResource("CircleShape2D_vkqoe")

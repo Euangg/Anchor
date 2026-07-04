@@ -2,37 +2,45 @@
 
 [ext_resource type="Script" uid="uid://bah25erdyua0h" path="res://test.gd" id="1_8uh7m"]
 [ext_resource type="PackedScene" uid="uid://be2mv4inn4tyd" path="res://0_player/player.tscn" id="1_37kl0"]
+[ext_resource type="PackedScene" uid="uid://d4fdd3aed1cag" path="res://0_level/0_prefab/hook_break.tscn" id="2_g14j6"]
 [ext_resource type="PackedScene" uid="uid://q5qyyo3ab2dv" path="res://0_level/0_enemy/first_generation.tscn" id="3_6uqi0"]
 [ext_resource type="PackedScene" uid="uid://be3j0yuftyc7i" path="res://0_level/0_enemy/second_generation.tscn" id="4_ppyta"]
 [ext_resource type="PackedScene" uid="uid://bxa1pj75p4skv" path="res://0_level/0_prefab/hook_point.tscn" id="5_ykrsh"]
+[ext_resource type="PackedScene" uid="uid://hu8qqtpjn67t" path="res://0_level/0_prefab/hook_trigger.tscn" id="6_vbegm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkqoe"]
-size = Vector2(1368, 163)
+size = Vector2(1924, 163)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8uh7m"]
-size = Vector2(210, 799)
+size = Vector2(210, 1087.5)
 
 [node name="Test" type="Node2D" unique_id=1831377270]
 script = ExtResource("1_8uh7m")
+
+[node name="HookTrigger" parent="." unique_id=1782690891 instance=ExtResource("6_vbegm")]
+position = Vector2(648, 824)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1063253831]
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=169693673]
-position = Vector2(514, 708.5)
+position = Vector2(926, 976)
 shape = SubResource("RectangleShape2D_vkqoe")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=939833847]
-position = Vector2(514, -81)
+position = Vector2(832, -88)
 shape = SubResource("RectangleShape2D_vkqoe")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=771309402]
-position = Vector2(1258, 295)
+position = Vector2(1712, 472.25)
 shape = SubResource("RectangleShape2D_8uh7m")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1552942976]
-position = Vector2(-106, 295)
+position = Vector2(-104, 440)
 shape = SubResource("RectangleShape2D_8uh7m")
+
+[node name="HookBreak" parent="StaticBody2D" unique_id=1698414225 instance=ExtResource("2_g14j6")]
+position = Vector2(1248, 632)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1465563430]
 collision_layer = 256
@@ -52,11 +60,19 @@ position = Vector2(191, 433)
 [node name="Player" parent="." unique_id=810710570 instance=ExtResource("1_37kl0")]
 position = Vector2(360, 380)
 
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1390259111]
+
 [node name="HookPoint" parent="." unique_id=1522728991 instance=ExtResource("5_ykrsh")]
-position = Vector2(577, 453)
+unique_name_in_owner = true
+position = Vector2(421, 453)
 
 [node name="HookPoint2" parent="." unique_id=1707192735 instance=ExtResource("5_ykrsh")]
 position = Vector2(558, 328)
 
 [node name="HookPoint3" parent="." unique_id=825023047 instance=ExtResource("5_ykrsh")]
 position = Vector2(513, 226)
+
+[node name="Timer" type="Timer" parent="." unique_id=517972741]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

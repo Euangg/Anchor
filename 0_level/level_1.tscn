@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://be2mv4inn4tyd" path="res://0_player/player.tscn" id="1_sqi7a"]
 [ext_resource type="PackedScene" uid="uid://q5qyyo3ab2dv" path="res://0_level/0_enemy/first_generation.tscn" id="2_8iqpk"]
 [ext_resource type="PackedScene" uid="uid://be3j0yuftyc7i" path="res://0_level/0_enemy/second_generation.tscn" id="3_hsn3b"]
+[ext_resource type="PackedScene" uid="uid://bxa1pj75p4skv" path="res://0_level/0_prefab/hook_point.tscn" id="4_3ysg8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dn38a"]
-size = Vector2(256, 704)
+size = Vector2(1064, 832)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ysg8"]
 size = Vector2(2807.25, 32)
@@ -41,7 +42,7 @@ size = Vector2(520, 32)
 size = Vector2(216, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6arim"]
-size = Vector2(216, 32)
+size = Vector2(184, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hd77m"]
 size = Vector2(4160, 32)
@@ -88,6 +89,8 @@ size = Vector2(141, 74.5)
 position = Vector2(914, 376)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1938077235]
+position = Vector2(-2, -136)
+enabled = false
 
 [node name="FirstGeneration" parent="." unique_id=1617407134 instance=ExtResource("2_8iqpk")]
 position = Vector2(-1112, 768)
@@ -113,11 +116,21 @@ position = Vector2(-2488, 128)
 [node name="FirstGeneration8" parent="." unique_id=193300075 instance=ExtResource("2_8iqpk")]
 position = Vector2(-2192, 128)
 
+[node name="FirstGeneration10" parent="." unique_id=421166391 instance=ExtResource("2_8iqpk")]
+position = Vector2(-296, 64)
+
+[node name="FirstGeneration11" parent="." unique_id=1880652374 instance=ExtResource("2_8iqpk")]
+position = Vector2(240, 64)
+
+[node name="FirstGeneration9" parent="." unique_id=1770550800 instance=ExtResource("2_8iqpk")]
+position = Vector2(-1088, -240)
+direction = -1
+
 [node name="Environment" type="StaticBody2D" parent="." unique_id=782178775]
 collision_mask = 0
 
 [node name="CollisionShape2D23" type="CollisionShape2D" parent="Environment" unique_id=1316449043]
-position = Vector2(-3648, 480)
+position = Vector2(-4052, 544)
 shape = SubResource("RectangleShape2D_dn38a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment" unique_id=1849714240]
@@ -157,6 +170,11 @@ shape = SubResource("RectangleShape2D_8iqpk")
 
 [node name="CollisionShape2D25" type="CollisionShape2D" parent="Environment" unique_id=33738829]
 position = Vector2(-1463.9999, 80)
+scale = Vector2(4.9898434, 1.5972295)
+shape = SubResource("RectangleShape2D_8iqpk")
+
+[node name="CollisionShape2D34" type="CollisionShape2D" parent="Environment" unique_id=1615098317]
+position = Vector2(-2264, -240)
 scale = Vector2(4.9898434, 1.5972295)
 shape = SubResource("RectangleShape2D_8iqpk")
 
@@ -206,7 +224,7 @@ position = Vector2(1292, -5712)
 shape = SubResource("RectangleShape2D_g746t")
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="Environment" unique_id=795549925]
-position = Vector2(1620, -5712)
+position = Vector2(1604, -5712)
 shape = SubResource("RectangleShape2D_6arim")
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="Environment" unique_id=1993964052]
@@ -221,6 +239,10 @@ shape = SubResource("RectangleShape2D_6esip")
 position = Vector2(1200, -432)
 shape = SubResource("RectangleShape2D_hva7j")
 
+[node name="CollisionShape2D35" type="CollisionShape2D" parent="Environment" unique_id=1989861552]
+position = Vector2(0, 208)
+shape = SubResource("RectangleShape2D_hva7j")
+
 [node name="CollisionShape2D31" type="CollisionShape2D" parent="Environment" unique_id=1022457804]
 position = Vector2(1536, -5256)
 shape = SubResource("RectangleShape2D_oe5v5")
@@ -230,7 +252,7 @@ position = Vector2(1344, -4912)
 shape = SubResource("RectangleShape2D_oe5v5")
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="Environment" unique_id=1867519132]
-position = Vector2(1712, 143.5)
+position = Vector2(1680, 144)
 shape = SubResource("RectangleShape2D_wh43j")
 
 [node name="CollisionShape2D27" type="CollisionShape2D" parent="Environment" unique_id=161454862]
@@ -238,7 +260,7 @@ position = Vector2(1200, -3104)
 shape = SubResource("RectangleShape2D_tk6re")
 
 [node name="CollisionShape2D28" type="CollisionShape2D" parent="Environment" unique_id=1197580386]
-position = Vector2(1712, -3104)
+position = Vector2(1680, -3104)
 shape = SubResource("RectangleShape2D_1spdv")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Environment" unique_id=1486352333]
@@ -296,7 +318,7 @@ position = Vector2(772.375, 828)
 shape = SubResource("RectangleShape2D_6hpxe")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="through3" unique_id=1411465723]
-position = Vector2(2532.375, -5444)
+position = Vector2(2500.375, -5444)
 shape = SubResource("RectangleShape2D_6hpxe")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="through3" unique_id=1108015517]
@@ -305,6 +327,10 @@ shape = SubResource("RectangleShape2D_6hpxe")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="through3" unique_id=902438458]
 position = Vector2(1988.375, -132)
+shape = SubResource("RectangleShape2D_6hpxe")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="through3" unique_id=645304012]
+position = Vector2(1988.375, 188)
 shape = SubResource("RectangleShape2D_6hpxe")
 
 [node name="through2" type="Area2D" parent="." unique_id=1757977689]
@@ -327,7 +353,7 @@ position = Vector2(1144, 600)
 shape = SubResource("CircleShape2D_co6qv")
 
 [node name="CollisionShape2D38" type="CollisionShape2D" parent="Hook" unique_id=1617252903]
-position = Vector2(1656, -488)
+position = Vector2(1624, -488)
 shape = SubResource("CircleShape2D_co6qv")
 
 [node name="CollisionShape2D39" type="CollisionShape2D" parent="Hook" unique_id=1263829530]
@@ -379,19 +405,7 @@ position = Vector2(-3504, 168)
 shape = SubResource("CircleShape2D_co6qv")
 
 [node name="CollisionShape2D28" type="CollisionShape2D" parent="Hook" unique_id=1244409402]
-position = Vector2(-3504, 576)
-shape = SubResource("CircleShape2D_co6qv")
-
-[node name="CollisionShape2D18" type="CollisionShape2D" parent="Hook" unique_id=352900282]
-position = Vector2(-2976, 704)
-shape = SubResource("CircleShape2D_co6qv")
-
-[node name="CollisionShape2D19" type="CollisionShape2D" parent="Hook" unique_id=501036406]
-position = Vector2(-2976, 384)
-shape = SubResource("CircleShape2D_co6qv")
-
-[node name="CollisionShape2D40" type="CollisionShape2D" parent="Hook" unique_id=1545282764]
-position = Vector2(-2984, -256)
+position = Vector2(-3504, 528)
 shape = SubResource("CircleShape2D_co6qv")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Hook" unique_id=1779974737]
@@ -430,6 +444,18 @@ shape = SubResource("CircleShape2D_co6qv")
 position = Vector2(-192, -136)
 shape = SubResource("CircleShape2D_co6qv")
 
+[node name="CollisionShape2D40" type="CollisionShape2D" parent="Hook" unique_id=444170724]
+position = Vector2(192, -136)
+shape = SubResource("CircleShape2D_co6qv")
+
+[node name="CollisionShape2D47" type="CollisionShape2D" parent="Hook" unique_id=1861039749]
+position = Vector2(576, -136)
+shape = SubResource("CircleShape2D_co6qv")
+
+[node name="CollisionShape2D48" type="CollisionShape2D" parent="Hook" unique_id=366703339]
+position = Vector2(960, -136)
+shape = SubResource("CircleShape2D_co6qv")
+
 [node name="CollisionShape2D21" type="CollisionShape2D" parent="Hook" unique_id=1981205242]
 position = Vector2(-576, -136)
 shape = SubResource("CircleShape2D_co6qv")
@@ -460,6 +486,18 @@ shape = SubResource("CircleShape2D_co6qv")
 
 [node name="CollisionShape2D29" type="CollisionShape2D" parent="Hook" unique_id=1774974524]
 position = Vector2(-192, -456)
+shape = SubResource("CircleShape2D_co6qv")
+
+[node name="CollisionShape2D44" type="CollisionShape2D" parent="Hook" unique_id=1803168917]
+position = Vector2(192, -456)
+shape = SubResource("CircleShape2D_co6qv")
+
+[node name="CollisionShape2D45" type="CollisionShape2D" parent="Hook" unique_id=1404792310]
+position = Vector2(576, -456)
+shape = SubResource("CircleShape2D_co6qv")
+
+[node name="CollisionShape2D46" type="CollisionShape2D" parent="Hook" unique_id=651070340]
+position = Vector2(960, -456)
 shape = SubResource("CircleShape2D_co6qv")
 
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="Hook" unique_id=1708102898]
@@ -516,3 +554,36 @@ shape = SubResource("CircleShape2D_co6qv")
 
 [node name="SecondGeneration" parent="." unique_id=1633058882 instance=ExtResource("3_hsn3b")]
 position = Vector2(-1616, 128)
+
+[node name="SecondGeneration3" parent="." unique_id=61345845 instance=ExtResource("3_hsn3b")]
+position = Vector2(-1160, 128)
+
+[node name="SecondGeneration6" parent="." unique_id=10663533 instance=ExtResource("3_hsn3b")]
+position = Vector2(-728, 64)
+
+[node name="SecondGeneration7" parent="." unique_id=1803570501 instance=ExtResource("3_hsn3b")]
+position = Vector2(600, 40)
+
+[node name="SecondGeneration2" parent="." unique_id=1392622273 instance=ExtResource("3_hsn3b")]
+position = Vector2(-1592, -296)
+direction = -1
+
+[node name="SecondGeneration4" parent="." unique_id=847346003 instance=ExtResource("3_hsn3b")]
+position = Vector2(-1240, -344)
+direction = -1
+
+[node name="SecondGeneration5" parent="." unique_id=961726869 instance=ExtResource("3_hsn3b")]
+position = Vector2(-824, -304)
+direction = -1
+
+[node name="HookPoint" parent="." unique_id=1522728991 instance=ExtResource("4_3ysg8")]
+position = Vector2(-2968, 704)
+
+[node name="HookPoint2" parent="." unique_id=978265671 instance=ExtResource("4_3ysg8")]
+position = Vector2(-2968, 384)
+
+[node name="HookPoint3" parent="." unique_id=1541957174 instance=ExtResource("4_3ysg8")]
+position = Vector2(-2976, -256)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=907905678]
+position = Vector2(-3208, 168)

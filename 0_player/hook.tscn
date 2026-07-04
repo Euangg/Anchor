@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cu87ycytrkccp"]
 
 [ext_resource type="Script" uid="uid://c2jbxowdox1kh" path="res://0_player/hook.gd" id="1_e86sx"]
+[ext_resource type="Texture2D" uid="uid://unemxfydoa4j" path="res://0_player/hook.png" id="2_e18y8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkqoe"]
 
@@ -10,7 +11,7 @@ script = ExtResource("1_e86sx")
 [node name="Area2D" type="Area2D" parent="." unique_id=701360054]
 unique_name_in_owner = true
 collision_layer = 0
-collision_mask = 769
+collision_mask = 3841
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1399761443]
 shape = SubResource("CircleShape2D_vkqoe")
@@ -21,6 +22,12 @@ position = Vector2(-42, 0)
 target_position = Vector2(100, 0)
 collision_mask = 256
 collide_with_areas = true
+
+[node name="Hook" type="Sprite2D" parent="." unique_id=1354001283]
+position = Vector2(-3.5762787e-07, -2.000001)
+rotation = -0.82030475
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_e18y8")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
