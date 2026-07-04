@@ -1,19 +1,29 @@
 [gd_scene format=3 uid="uid://coqt65474ojwr"]
 
 [ext_resource type="Script" uid="uid://cpvicf43i3adu" path="res://0_level/0_enemy/laser.gd" id="1_ki8aa"]
+[ext_resource type="Texture2D" uid="uid://i04mllkhqib1" path="res://0_level/0_enemy/laser.png" id="2_qb66n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkqoe"]
-size = Vector2(1288, 20)
+size = Vector2(824, 20)
+
+[sub_resource type="Animation" id="Animation_qb66n"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xsgev"]
+_data = {
+&"idle": SubResource("Animation_qb66n")
+}
 
 [node name="Laser" type="Node2D" unique_id=1475021736]
 script = ExtResource("1_ki8aa")
+metadata/_edit_vertical_guides_ = [824.0]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1000189539]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=790788678]
-position = Vector2(644, 0)
+position = Vector2(412, 0)
 shape = SubResource("RectangleShape2D_vkqoe")
 debug_color = Color(1, 0, 0, 0.41960785)
 
@@ -21,4 +31,15 @@ debug_color = Color(1, 0, 0, 0.41960785)
 one_shot = true
 autostart = true
 
+[node name="Laser" type="Sprite2D" parent="." unique_id=1904259711]
+position = Vector2(-2.6638486e-07, 3.5974458e-06)
+rotation = -1.5707964
+scale = Vector2(0.2, 1)
+texture = ExtResource("2_qb66n")
+offset = Vector2(0, 411.49997)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=57408138]
+libraries/ = SubResource("AnimationLibrary_xsgev")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
