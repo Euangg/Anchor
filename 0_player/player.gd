@@ -7,6 +7,7 @@ var last_hook:Hook=null
 var dir_hand:Vector2=Vector2.ZERO
 var drag_mode_once:bool=false
 var is_dragging:bool=false
+var auto_drag:bool=false
 
 func _draw() -> void:
 	draw_circle(%Hand.position,Hook.max_distance,Color.RED,false,-1)
@@ -29,6 +30,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y+=gravity*delta
 	
 	if Input.is_action_just_pressed("tab"):drag_mode_once=!drag_mode_once
+	if Input.is_action_just_pressed("q"):auto_drag=!auto_drag
 	
 	if Input.is_action_just_pressed("mouse_left"):
 		if last_hook:

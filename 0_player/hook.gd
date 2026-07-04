@@ -5,7 +5,7 @@ const max_distance:float=500
 const back_speed:float=1500
 
 var velocity:Vector2
-var master:Node2D=null
+var master:Player=null
 var is_back:bool=false
 
 func _ready() -> void:
@@ -30,6 +30,7 @@ func bite():
 	velocity=Vector2.ZERO
 	if %RayCast2D.is_colliding():
 		position=%RayCast2D.get_collision_point()
+	if master.auto_drag:master.is_dragging=true
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	bite()
