@@ -11,8 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://bl54djt0nl52q" path="res://0_level/component/ground_1.tscn" id="8_6w1ve"]
 [ext_resource type="PackedScene" uid="uid://c3m0l5lsogy8g" path="res://0_level/component/wall2.tscn" id="8_fwrwb"]
 [ext_resource type="PackedScene" uid="uid://fm5qc4kpnawn" path="res://0_level/component/ground_2.tscn" id="9_oran0"]
+[ext_resource type="PackedScene" uid="uid://hu8qqtpjn67t" path="res://0_level/0_prefab/hook_trigger.tscn" id="10_6arim"]
+[ext_resource type="Script" uid="uid://dqi41h1vgsu4b" path="res://0_level/component/controlhook/controlhook.gd" id="10_wh43j"]
 [ext_resource type="PackedScene" uid="uid://dlanhjwgrl35w" path="res://0_level/component/support_1.tscn" id="11_hva7j"]
 [ext_resource type="PackedScene" uid="uid://dqyv844gpboun" path="res://0_level/component/support_2.tscn" id="12_6hpxe"]
+[ext_resource type="Script" uid="uid://1rsue7pbwabx" path="res://0_level/component/controlhook/liftinghook.gd" id="12_tk6re"]
 [ext_resource type="PackedScene" uid="uid://bcl4r16inpoxa" path="res://0_level/component/handrail_1.tscn" id="13_g746t"]
 [ext_resource type="PackedScene" uid="uid://cbaxus44mmds8" path="res://0_level/component/handrail_2.tscn" id="14_6arim"]
 [ext_resource type="Texture2D" uid="uid://m0dgjqyws0gk" path="res://0_level/picture/wall/home.png" id="16_6arim"]
@@ -35,13 +38,13 @@ size = Vector2(3712, 32)
 size = Vector2(12.325033, 60.104073)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwrwb"]
-size = Vector2(1.6033108, 30.052013)
+size = Vector2(1.6032507, 15.025988)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xemom"]
-size = Vector2(1.6032813, 30.052013)
+size = Vector2(1.6032813, 15.026007)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jq884"]
-size = Vector2(1.6032813, 30.052013)
+size = Vector2(1.6032813, 15.026007)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjxql"]
 size = Vector2(3712, 32)
@@ -88,9 +91,6 @@ size = Vector2(32, 288)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hpxe"]
 size = Vector2(16, 24)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ragr6"]
-size = Vector2(32, 48)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_co6qv"]
 radius = 25.298222
 
@@ -98,6 +98,11 @@ radius = 25.298222
 size = Vector2(141, 74.5)
 
 [node name="Level1" type="Node2D" unique_id=1600844090]
+
+[node name="Home" type="Sprite2D" parent="." unique_id=152049826]
+position = Vector2(384, 304)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_6arim")
 
 [node name="Liftwall" type="Sprite2D" parent="." unique_id=589147379]
 position = Vector2(1024, 640)
@@ -408,7 +413,7 @@ scale = Vector2(4.9898434, 1.5972295)
 shape = SubResource("RectangleShape2D_8iqpk")
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="Environment" unique_id=901526775]
-position = Vector2(-2940, 744)
+position = Vector2(-2940, 756)
 scale = Vector2(4.9898434, 1.5972295)
 shape = SubResource("RectangleShape2D_fwrwb")
 
@@ -418,17 +423,17 @@ scale = Vector2(4.9898434, 1.5972295)
 shape = SubResource("RectangleShape2D_fwrwb")
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="Environment" unique_id=2035522806]
-position = Vector2(-2939.9998, 424)
+position = Vector2(-2940, 436)
 scale = Vector2(4.9898434, 1.5972295)
 shape = SubResource("RectangleShape2D_fwrwb")
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="Environment" unique_id=797743728]
-position = Vector2(-2940, 104.00001)
+position = Vector2(-2940, 116)
 scale = Vector2(4.9898434, 1.5972295)
 shape = SubResource("RectangleShape2D_xemom")
 
 [node name="CollisionShape2D24" type="CollisionShape2D" parent="Environment" unique_id=1889223116]
-position = Vector2(-2940, -216)
+position = Vector2(-2940, -204.00002)
 scale = Vector2(4.9898434, 1.5972295)
 shape = SubResource("RectangleShape2D_jq884")
 
@@ -503,10 +508,6 @@ shape = SubResource("RectangleShape2D_cu1cb")
 [node name="through" type="Area2D" parent="." unique_id=816011215]
 position = Vector2(-844.375, 464)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="through" unique_id=607788037]
-position = Vector2(-1843.625, -160)
-shape = SubResource("RectangleShape2D_igvgf")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="through" unique_id=234606257]
 position = Vector2(844.375, 160)
 shape = SubResource("RectangleShape2D_igvgf")
@@ -550,23 +551,12 @@ shape = SubResource("RectangleShape2D_6hpxe")
 position = Vector2(1500.375, 168)
 shape = SubResource("RectangleShape2D_6hpxe")
 
-[node name="through2" type="Area2D" parent="." unique_id=1757977689]
-position = Vector2(-844.375, 784)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="through2" unique_id=866069451]
-position = Vector2(-1843.625, -280)
-shape = SubResource("RectangleShape2D_ragr6")
-
 [node name="Hook" type="Area2D" parent="." unique_id=484347550]
 collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionShape2D39" type="CollisionShape2D" parent="Hook" unique_id=1263829530]
 position = Vector2(928, -640)
-shape = SubResource("CircleShape2D_co6qv")
-
-[node name="CollisionShape2D36" type="CollisionShape2D" parent="Hook" unique_id=533861633]
-position = Vector2(-3136, -64)
 shape = SubResource("CircleShape2D_co6qv")
 
 [node name="CollisionShape2D29" type="CollisionShape2D" parent="Hook" unique_id=1774974524]
@@ -664,10 +654,22 @@ position = Vector2(-3208, 168)
 [node name="HookBreak" parent="." unique_id=1698414225 instance=ExtResource("5_6esip")]
 position = Vector2(-2944, 80)
 
-[node name="HookPoint4" parent="." unique_id=1865763355 instance=ExtResource("4_3ysg8")]
-position = Vector2(-3136, 272)
+[node name="controlhook" type="Node2D" parent="." unique_id=2099127048]
+position = Vector2(-3200, 272)
+script = ExtResource("10_wh43j")
 
-[node name="liftinghook" type="Node2D" parent="HookPoint4" unique_id=1064098424]
+[node name="HookTrigger" parent="controlhook" unique_id=1634883139 instance=ExtResource("10_6arim")]
+position = Vector2(736, 0)
+
+[node name="liftinghook" type="Node2D" parent="controlhook" unique_id=792184721]
+unique_name_in_owner = true
+position = Vector2(64, 0)
+script = ExtResource("12_tk6re")
+
+[node name="HookPoint" parent="controlhook/liftinghook" unique_id=1643049206 instance=ExtResource("4_3ysg8")]
+
+[node name="HookPoint7" parent="." unique_id=787993366 instance=ExtResource("4_3ysg8")]
+position = Vector2(-3080, 1000)
 
 [node name="ground1" parent="." unique_id=831265284 instance=ExtResource("8_6w1ve")]
 position = Vector2(-200, 464)
@@ -865,9 +867,17 @@ position = Vector2(-2496, 184)
 z_index = 5
 position = Vector2(-2624, -136)
 
+[node name="light28" parent="." unique_id=1280533736 instance=ExtResource("6_6esip")]
+z_index = 5
+position = Vector2(-2496, -136)
+
 [node name="light9" parent="." unique_id=735135872 instance=ExtResource("6_6esip")]
 z_index = 5
 position = Vector2(-2816, 184)
+
+[node name="light27" parent="." unique_id=508112095 instance=ExtResource("6_6esip")]
+z_index = 5
+position = Vector2(-2816, -456)
 
 [node name="light17" parent="." unique_id=1095820709 instance=ExtResource("6_6esip")]
 z_index = 5
@@ -949,11 +959,6 @@ position = Vector2(-2810.6003, -558.8)
 
 [node name="Handrail8" parent="." unique_id=39490782 instance=ExtResource("14_6arim")]
 position = Vector2(-2814.0002, -242.99998)
-
-[node name="Home" type="Sprite2D" parent="." unique_id=152049826]
-position = Vector2(384, 304)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("16_6arim")
 
 [node name="Column" type="Sprite2D" parent="." unique_id=346447347]
 z_index = 1
@@ -1200,4 +1205,4 @@ position = Vector2(-3336, 624)
 [node name="HookPoint6" parent="." unique_id=1216811031 instance=ExtResource("4_3ysg8")]
 position = Vector2(-3296, 232)
 
-[editable path="HookPoint4"]
+[connection signal="trigger" from="controlhook/HookTrigger" to="controlhook" method="_on_hook_trigger_trigger"]
