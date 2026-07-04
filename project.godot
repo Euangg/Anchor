@@ -102,6 +102,7 @@ space={
 2d_physics/layer_5="body_player"
 2d_physics/layer_6="body_enemy"
 2d_physics/layer_9="area_hook"
+2d_physics/layer_10="range_hook"
 
 [physics]
 

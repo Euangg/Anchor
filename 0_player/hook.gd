@@ -6,6 +6,7 @@ const back_speed:float=1500
 
 var velocity:Vector2
 var master:Player=null
+var target:CollisionObject2D=null
 var is_back:bool=false
 
 func _ready() -> void:
@@ -25,19 +26,32 @@ func back():
 	%Area2D.set_collision_mask_value(1,false)
 	%Area2D.set_collision_mask_value(5,true)
 	%Area2D.set_collision_mask_value(9,false)
+	%Area2D.set_collision_mask_value(10,false)
+	if target:
+		if target.get_collision_layer_value(10):
+			var hook_point=target.get_parent()
+			hook_point.release()
 
-func bite():
+func bite(thing:Node2D):
 	velocity=Vector2.ZERO
 	if %RayCast2D.is_colliding():
 		position=%RayCast2D.get_collision_point()
 	if master.auto_drag:master.is_dragging=true
+	target=thing
+
+func bite2(pos:Vector2,thing:Node2D):
+	velocity=Vector2.ZERO
+	position=pos
+	if master.auto_drag:master.is_dragging=true
+	target=thing
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	bite()
+	if area.get_collision_layer_value(10):bite2(area.global_position,area)
+	else:bite(area)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.get_collision_layer_value(1):
-		if body.get_collision_layer_value(9):bite()
+		if body.get_collision_layer_value(9):bite(body)
 		else:back()
 	if body.get_collision_layer_value(5):
 		if is_back:
