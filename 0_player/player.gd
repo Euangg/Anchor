@@ -53,8 +53,9 @@ func _physics_process(delta: float) -> void:
 	hand.rotation=dir_hand.angle()
 	
 	#开发者全向移动
-	#var input=Input.get_vector("a","d","w","s")
-	#velocity=input*500
+	var input=Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	if input.is_zero_approx():pass
+	else:velocity=input*500
 	#手动挡移动
 	#if Input.is_action_just_pressed("tab"):drag_mode_once=!drag_mode_once
 	#if Input.is_action_just_pressed("q"):auto_drag=!auto_drag
@@ -91,7 +92,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("mouse_right"):show_aim()
 	if Input.is_action_just_released("mouse_right"):hide_aim()
 	
-	if is_dragging:drag(delta)
+	
 	
 	var next_state=current_state
 	#1/3.状态判断
@@ -119,9 +120,9 @@ func _physics_process(delta: float) -> void:
 		State.PULL:
 			if not is_dragging:next_state=State.FALL
 			if reached:next_state=State.HANG
-			if released:
-				if is_on_floor():next_state=State.IDLE
-				else:next_state=State.FALL
+			if released:next_state=State.FALL
+			if last_hook:pass
+			else:next_state=State.FALL
 		State.HANG:
 			if released:
 				if is_on_floor():next_state=State.IDLE
@@ -152,9 +153,11 @@ func _physics_process(delta: float) -> void:
 		State.RUN:
 			velocity.x=input_x*500
 		State.PULL:
-			var diff_x=last_hook.global_position.x-global_position.x
-			if is_zero_approx(diff_x):pass
-			else:direction=sign(diff_x)
+			if last_hook:
+				var diff_x=last_hook.global_position.x-global_position.x
+				if is_zero_approx(diff_x):pass
+				else:direction=sign(diff_x)
+				if is_dragging:drag(delta)
 		State.FALL:
 			velocity.x=input_x*500
 		
@@ -170,11 +173,13 @@ func show_aim():
 	%Arrow.visible=true
 	%Ring.visible=true
 	FmodServer.play_one_shot("event:/SFX/AIMING/AIM_IN")
+	Engine.time_scale=0.1
 
 func hide_aim():
 	%Arrow.visible=false
 	%Ring.visible=false
 	FmodServer.play_one_shot("event:/SFX/AIMING/AIM_OUT")
+	Engine.time_scale=1
 
 func drag(delta):
 	if last_hook and (last_hook.velocity.is_zero_approx()):
@@ -183,7 +188,7 @@ func drag(delta):
 			velocity=Vector2.ZERO
 			global_position=last_hook.global_position-hand.position
 			reached=true
-		else:velocity=vec_hook_hand.normalized()*600
+		else:velocity=vec_hook_hand.normalized()*700
 		if last_hook.target_bit:
 			if last_hook.target_bit.get_collision_layer_value(11):
 				var duration_thing=last_hook.target_bit.get_parent()

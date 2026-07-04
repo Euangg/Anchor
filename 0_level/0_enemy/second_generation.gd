@@ -35,3 +35,6 @@ func continue_move():
 
 func _on_timer_timeout() -> void:
 	linear_velocity*=-1
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:direction*=-1

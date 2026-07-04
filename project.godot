@@ -15,7 +15,7 @@ General/banks_path="res://sound/banks"
 [application]
 
 config/name="Anchor"
-run/main_scene="uid://dso8uucqn0t77"
+run/main_scene="uid://br8cveyx7jnbe"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
 [autoload]
@@ -25,6 +25,8 @@ Global="*uid://big1ckv0yn0a2"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
@@ -33,10 +35,6 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
-
-[gui]
-
-theme/custom_font="uid://c7lce17wesd4i"
 
 [input]
 
@@ -115,3 +113,4 @@ space={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+viewport/hdr_2d=true

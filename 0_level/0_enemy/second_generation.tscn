@@ -23,6 +23,9 @@ animations = [{
 "speed": 35.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6tit"]
+size = Vector2(294, 125)
+
 [sub_resource type="Animation" id="Animation_fyldj"]
 resource_name = "idle"
 loop_mode = 1
@@ -92,6 +95,15 @@ flip_h = true
 [node name="MarkerBoom" type="Marker2D" parent="Graphic" unique_id=222709823]
 position = Vector2(0, -42)
 
+[node name="Area2D" type="Area2D" parent="Graphic" unique_id=387047402]
+position = Vector2(0, 16)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/Area2D" unique_id=1570194216]
+position = Vector2(-147, -61)
+shape = SubResource("RectangleShape2D_v6tit")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=810308884]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_aduis")
@@ -105,4 +117,5 @@ autostart = true
 position = Vector2(0, -41.5)
 shape = SubResource("RectangleShape2D_vkqoe")
 
+[connection signal="body_entered" from="Graphic/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

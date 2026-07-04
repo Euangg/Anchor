@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c7lce17wesd4i"
-path="res://.godot/imported/JURA-VARIABLEFONT_WGHT.TTF-f4bdfadde132e686259e02e46444eb71.fontdata"
+uid="uid://k8qw45mlyky2"
+path="res://.godot/imported/SIMYOU.TTF-137b3f0dc71aa1888de256113c0482dd.fontdata"
 
 [deps]
 
-source_file="res://0_utils/JURA-VARIABLEFONT_WGHT.TTF"
-dest_files=["res://.godot/imported/JURA-VARIABLEFONT_WGHT.TTF-f4bdfadde132e686259e02e46444eb71.fontdata"]
+source_file="res://0_utils/SIMYOU.TTF"
+dest_files=["res://.godot/imported/SIMYOU.TTF-137b3f0dc71aa1888de256113c0482dd.fontdata"]
 
 [params]
 

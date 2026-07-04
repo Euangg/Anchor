@@ -16,13 +16,6 @@ collision_mask = 3841
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1399761443]
 shape = SubResource("CircleShape2D_vkqoe")
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=633181280]
-unique_name_in_owner = true
-position = Vector2(-42, 0)
-target_position = Vector2(100, 0)
-collision_mask = 256
-collide_with_areas = true
-
 [node name="Hook" type="Sprite2D" parent="." unique_id=1354001283]
 position = Vector2(-3.5762787e-07, -2.000001)
 rotation = -0.82030475
