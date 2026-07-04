@@ -1,0 +1,10 @@
+CollisionShape2D
+StaticBody2D
+Area2D
+ShapeCast2D
+RayCast2D
+CollisionPolygon2D
+Node
+Node2D
+Marker2D
+CharacterBody2D

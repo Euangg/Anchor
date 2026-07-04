@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://be2mv4inn4tyd"]
+
+[ext_resource type="Script" uid="uid://culkir3ur5h87" path="res://0_player/player.gd" id="1_y07ys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkqoe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vkqoe"]
+
+[node name="Player" type="CharacterBody2D" unique_id=810710570]
+collision_layer = 16
+script = ExtResource("1_y07ys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=509208756]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_vkqoe")
+
+[node name="Hand" type="Node2D" parent="." unique_id=1520798446]
+unique_name_in_owner = true
+position = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand" unique_id=1963407735]
+position = Vector2(21, 0)
+shape = SubResource("CircleShape2D_vkqoe")

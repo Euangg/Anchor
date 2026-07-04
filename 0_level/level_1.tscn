@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://v8tkkjyl8vhi"]
+
+[ext_resource type="PackedScene" uid="uid://be2mv4inn4tyd" path="res://0_player/player.tscn" id="1_sqi7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjxql"]
+size = Vector2(1277, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqi7a"]
+size = Vector2(69.5, 434.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_co6qv"]
+radius = 25.179358
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yddip"]
+size = Vector2(141, 74.5)
+
+[node name="Level1" type="Node2D" unique_id=1600844090]
+
+[node name="Player" parent="." unique_id=810710570 instance=ExtResource("1_sqi7a")]
+position = Vector2(952, 277)
+
+[node name="Environment" type="StaticBody2D" parent="." unique_id=782178775]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment" unique_id=1849714240]
+position = Vector2(576, 463)
+shape = SubResource("RectangleShape2D_gjxql")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment" unique_id=99384657]
+position = Vector2(1171, 267)
+shape = SubResource("RectangleShape2D_sqi7a")
+
+[node name="Hook" type="Area2D" parent="." unique_id=484347550]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook" unique_id=1532664443]
+position = Vector2(702, 229)
+shape = SubResource("CircleShape2D_co6qv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hook" unique_id=973673254]
+position = Vector2(484, 116)
+shape = SubResource("CircleShape2D_co6qv")
+
+[node name="EnvironmentHook" type="StaticBody2D" parent="." unique_id=968166787]
+collision_layer = 257
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnvironmentHook" unique_id=713651192]
+position = Vector2(552, 391)
+shape = SubResource("RectangleShape2D_yddip")

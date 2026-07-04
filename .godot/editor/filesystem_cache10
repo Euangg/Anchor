@@ -1,0 +1,11 @@
+78098b89c88a74ebe8c20117b8754620
+::res://::1783127241
+test.gd::GDScript::2402564497117601817::1783080605::0::1::::<>Node2D<><>0<>0<><>::
+test.tscn::PackedScene::8453602956062070724::1783099352::0::1::::<><><>0<>0<><>::uid://bah25erdyua0h::::res://test.gd<>uid://be2mv4inn4tyd::::res://0_player/player.tscn
+::res://0_level/::1783105404
+level_1.tscn::PackedScene::1543262203327477058::1783105404::0::1::::<><><>0<>0<><>::uid://be2mv4inn4tyd::::res://0_player/player.tscn
+::res://0_player/::1783105308
+hook.gd::GDScript::6686622105120742075::1783104753::0::1::::Hook<>Node2D<><>0<>0<><>::
+hook.tscn::PackedScene::6246728651861459227::1783105308::0::1::::<><><>0<>0<><>::uid://c2jbxowdox1kh::::res://0_player/hook.gd
+player.gd::GDScript::6199948788804501790::1783105308::0::1::::Player<>CharacterBody2D<><>0<>0<><>::
+player.tscn::PackedScene::2723681899334829911::1783100733::0::1::::<><><>0<>0<><>::uid://culkir3ur5h87::::res://0_player/player.gd
