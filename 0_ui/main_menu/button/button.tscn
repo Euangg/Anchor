@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c42ls7xswtanx"]
+
+[ext_resource type="Script" uid="uid://e2oliqktuaww" path="res://0_ui/main_menu/button/button.gd" id="1_efxun"]
+[ext_resource type="Texture2D" uid="uid://djpth7dps7oaq" path="res://0_ui/main_menu/button/x1_c.png" id="2_xpt8g"]
+[ext_resource type="Texture2D" uid="uid://hve2f710uohg" path="res://0_ui/main_menu/button/main_02_start_c.png" id="3_426j6"]
+
+[node name="ButtonStart" type="Control" unique_id=1483988838]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_efxun")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1752345133]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=624703472]
+polygon = PackedVector2Array(-762, 152, -726, 247, 751, -100, 751, -247)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1876494019]
+unique_name_in_owner = true
+texture = ExtResource("2_xpt8g")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1038278910]
+unique_name_in_owner = true
+position = Vector2(-431, 116)
+texture = ExtResource("3_426j6")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

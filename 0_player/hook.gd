@@ -2,7 +2,7 @@ class_name Hook
 extends Node2D
 
 const max_distance:float=800
-const back_speed:float=1500
+const back_speed:float=1800
 
 var velocity:Vector2
 var master:Player=null
@@ -10,11 +10,18 @@ var target_bit:CollisionObject2D=null
 var vec_target:Vector2
 var is_back:bool=false
 
+var is_hit_wall:bool=false
+var is_hit_point:bool=false
+
 
 func _ready() -> void:
 	rotation=velocity.angle()
 
 func _physics_process(delta: float) -> void:
+	if is_hit_wall:
+		if target_bit:is_hit_wall=false
+		else:back()
+	
 	if is_back:
 		var vec=master.hand.global_position-global_position
 		velocity=vec.normalized()*back_speed
@@ -42,14 +49,14 @@ func set_target(thing:Node2D):
 	vec_target=position-target_bit.global_position
 
 func bite(thing:Node2D):
+	%Area2D.set_collision_mask_value(1,false)
 	FmodServer.play_one_shot("event:/SFX/HOOK/HOOKED")
 	velocity=Vector2.ZERO
-	if %RayCast2D.is_colliding():
-		position=%RayCast2D.get_collision_point()
 	if master.auto_drag:master.start_drag()
 	set_target(thing)
 
 func bite2(pos:Vector2,thing:Node2D):
+	%Area2D.set_collision_mask_value(1,false)
 	FmodServer.play_one_shot("event:/SFX/HOOK/HOOKED")
 	velocity=Vector2.ZERO
 	position=pos
@@ -69,12 +76,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.get_collision_layer_value(1):
 		if body.get_collision_layer_value(9):bite(body)
-		else:back()
+		else:is_hit_wall=true
 	if body.get_collision_layer_value(5):
 		if is_back:
 			var player:Node2D=body
 			player.last_hook=null
-			#player.set_deferred("freeze",false)
 			queue_free()
 	if body.get_collision_layer_value(6):
 		var enemy:Entity=body
