@@ -42,16 +42,18 @@ func set_target(thing:Node2D):
 	vec_target=position-target_bit.global_position
 
 func bite(thing:Node2D):
+	FmodServer.play_one_shot("event:/SFX/HOOK/HOOKED")
 	velocity=Vector2.ZERO
 	if %RayCast2D.is_colliding():
 		position=%RayCast2D.get_collision_point()
-	if master.auto_drag:master.is_dragging=true
+	if master.auto_drag:master.start_drag()
 	set_target(thing)
 
 func bite2(pos:Vector2,thing:Node2D):
+	FmodServer.play_one_shot("event:/SFX/HOOK/HOOKED")
 	velocity=Vector2.ZERO
 	position=pos
-	if master.auto_drag:master.is_dragging=true
+	if master.auto_drag:master.start_drag()
 	set_target(thing)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

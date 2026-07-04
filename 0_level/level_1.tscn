@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://q5qyyo3ab2dv" path="res://0_level/0_enemy/first_generation.tscn" id="2_8iqpk"]
 [ext_resource type="PackedScene" uid="uid://be3j0yuftyc7i" path="res://0_level/0_enemy/second_generation.tscn" id="3_hsn3b"]
 [ext_resource type="PackedScene" uid="uid://bxa1pj75p4skv" path="res://0_level/0_prefab/hook_point.tscn" id="4_3ysg8"]
+[ext_resource type="PackedScene" uid="uid://d4fdd3aed1cag" path="res://0_level/0_prefab/hook_break.tscn" id="5_6esip"]
+[ext_resource type="PackedScene" uid="uid://hu8qqtpjn67t" path="res://0_level/0_prefab/hook_trigger.tscn" id="6_dn38a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dn38a"]
 size = Vector2(1064, 832)
@@ -90,7 +92,6 @@ position = Vector2(914, 376)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1938077235]
 position = Vector2(-2, -136)
-enabled = false
 
 [node name="FirstGeneration" parent="." unique_id=1617407134 instance=ExtResource("2_8iqpk")]
 position = Vector2(-1112, 768)
@@ -392,10 +393,6 @@ shape = SubResource("CircleShape2D_co6qv")
 position = Vector2(-2816, 184)
 shape = SubResource("CircleShape2D_co6qv")
 
-[node name="CollisionShape2D17" type="CollisionShape2D" parent="Hook" unique_id=523374949]
-position = Vector2(-3136, 272)
-shape = SubResource("CircleShape2D_co6qv")
-
 [node name="CollisionShape2D36" type="CollisionShape2D" parent="Hook" unique_id=533861633]
 position = Vector2(-3136, -64)
 shape = SubResource("CircleShape2D_co6qv")
@@ -587,3 +584,16 @@ position = Vector2(-2976, -256)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=907905678]
 position = Vector2(-3208, 168)
+
+[node name="HookBreak" parent="." unique_id=1698414225 instance=ExtResource("5_6esip")]
+position = Vector2(-2968, 64)
+
+[node name="HookTrigger" parent="." unique_id=1955844154 instance=ExtResource("6_dn38a")]
+position = Vector2(-1600, 248)
+
+[node name="HookPoint4" parent="." unique_id=1865763355 instance=ExtResource("4_3ysg8")]
+position = Vector2(-3136, 272)
+
+[node name="liftinghook" type="Node2D" parent="HookPoint4" unique_id=1064098424]
+
+[editable path="HookPoint4"]

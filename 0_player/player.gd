@@ -10,14 +10,20 @@ enum Direction{LEFT=-1,RIGHT=1}
 		if not is_node_ready():await ready
 		graphic.scale.x=direction
 
+enum State{NULL,
+	IDLE,IDLE_RUN,RUN,
+	SHOT,PULL,FALL,HANG,
+}
+var current_state:State=State.NULL
+
 @onready var hand: Node2D = $Hand
 
 const gravity:float=10000
 var last_hook:Hook=null
 var dir_hand:Vector2=Vector2.ZERO
-var drag_mode_once:bool=false
+var drag_mode_once:bool=true
 var is_dragging:bool=false
-var auto_drag:bool=false
+var auto_drag:bool=true
 
 func _draw() -> void:
 	draw_circle(hand.position,Hook.max_distance,Color.RED,false,-1)
@@ -37,14 +43,14 @@ func _physics_process(delta: float) -> void:
 	
 	var input=Input.get_vector("a","d","w","s")
 	velocity=input*500
-	velocity.y+=gravity*delta
+	
 	
 	var input_x=Input.get_axis("a","d")
 	if is_zero_approx(input_x):pass
 	else:direction=Direction.LEFT if input_x<0 else Direction.RIGHT
 	
-	if Input.is_action_just_pressed("tab"):drag_mode_once=!drag_mode_once
-	if Input.is_action_just_pressed("q"):auto_drag=!auto_drag
+	#if Input.is_action_just_pressed("tab"):drag_mode_once=!drag_mode_once
+	#if Input.is_action_just_pressed("q"):auto_drag=!auto_drag
 	
 	if Input.is_action_just_pressed("mouse_left"):
 		if last_hook:
@@ -57,18 +63,63 @@ func _physics_process(delta: float) -> void:
 			h.master=self
 			add_sibling(h)
 			last_hook=h
-			FmodServer.play_one_shot("event:/General/Click")
+			FmodServer.play_one_shot("event:/SFX/HOOK/CASTING")
 	
-	if drag_mode_once:
-		if Input.is_action_just_pressed("mouse_right"):
-			if is_dragging:is_dragging=false
-			else:
-				if last_hook and (last_hook.velocity.is_zero_approx()):is_dragging=true
-	else:
-		if Input.is_action_just_pressed("mouse_right"):is_dragging=true
-		if Input.is_action_just_released("mouse_right"):is_dragging=false
+	#if drag_mode_once:
+		#if Input.is_action_just_pressed("mouse_right"):
+			#if is_dragging:is_dragging=false
+			#else:
+				#if last_hook and (last_hook.velocity.is_zero_approx()):start_drag()
+	#else:
+		#if Input.is_action_just_pressed("mouse_right"):start_drag()
+		#if Input.is_action_just_released("mouse_right"):is_dragging=false
+	
+	if Input.is_action_just_pressed("mouse_right"):show_aim()
+	if Input.is_action_just_released("mouse_right"):hide_aim()
+	
 	if is_dragging:drag(delta)
+	
+	var next_state=current_state
+	#1/3.状态判断
+	match current_state:
+		State.NULL:next_state=State.IDLE
+		State.IDLE:
+			if is_zero_approx(input_x):pass
+			else:next_state=State.IDLE_RUN
+		State.IDLE_RUN:
+			if %AnimationPlayer.is_playing():
+				if is_zero_approx(input_x):next_state=State.IDLE
+			else:next_state=State.RUN
+		State.RUN:
+			if is_zero_approx(input_x):next_state=State.IDLE
+	#2/3.状态切换
+	if next_state==current_state:pass
+	else:
+		match current_state:
+			State.IDLE:pass
+		match next_state:
+			State.IDLE:%AnimationPlayer.play("idle")
+			State.IDLE_RUN:%AnimationPlayer.play("idle_run",-1,2)
+			State.RUN:%AnimationPlayer.play("run",-1,2)
+		current_state=next_state
+	#3/3.状态运行
+	match current_state:
+		State.IDLE:pass
+	
+	velocity.y+=gravity*delta
 	move_and_slide()
+
+func start_drag():
+	is_dragging=true
+	FmodServer.play_one_shot("event:/SFX/HOOK/FLYING")
+
+func show_aim():
+	%Arrow.visible=true
+	%Ring.visible=true
+
+func hide_aim():
+	%Arrow.visible=false
+	%Ring.visible=false
 
 func drag(delta):
 	if last_hook and (last_hook.velocity.is_zero_approx()):
