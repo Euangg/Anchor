@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dcagfur7v7xbn"]
+
+[ext_resource type="PackedScene" uid="uid://bxa1pj75p4skv" path="res://0_level/0_prefab/hook_point.tscn" id="1_mnbcf"]
+[ext_resource type="Texture2D" uid="uid://cgsjv2cmtpuad" path="res://0_level/picture/hook/light.png" id="2_0yepq"]
+
+[node name="light" type="Node2D" unique_id=957614782]
+
+[node name="HookPoint" parent="." unique_id=1522728991 instance=ExtResource("1_mnbcf")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=885538250]
+position = Vector2(9.536743e-07, -8)
+scale = Vector2(0.22947764, 0.22947761)
+texture = ExtResource("2_0yepq")

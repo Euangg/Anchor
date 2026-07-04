@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bl54djt0nl52q"]
+
+[ext_resource type="Texture2D" uid="uid://05phy8pq4jo7" path="res://0_level/picture/ground/ground1.png" id="1_ifgiv"]
+
+[node name="ground1" type="Sprite2D" unique_id=831265284]
+position = Vector2(-7.999996, -16)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_ifgiv")

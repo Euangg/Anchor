@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bcl4r16inpoxa"]
+
+[ext_resource type="Texture2D" uid="uid://c6op1cipkd2gs" path="res://0_level/picture/wall/handrail1.png" id="1_h8c55"]
+
+[node name="Handrail1" type="Sprite2D" unique_id=916988438]
+z_index = 10
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_h8c55")

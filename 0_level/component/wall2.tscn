@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c3m0l5lsogy8g"]
+
+[ext_resource type="Texture2D" uid="uid://cd4vdkcmhkenn" path="res://0_level/picture/wall/wall2.png" id="1_nsgw3"]
+
+[node name="wall2" type="Sprite2D" unique_id=1909570856]
+position = Vector2(0, -145)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_nsgw3")

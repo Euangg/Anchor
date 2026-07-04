@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dqyv844gpboun"]
+
+[ext_resource type="Texture2D" uid="uid://c51ootohnk2l" path="res://0_level/picture/wall/support2.png" id="1_fx54p"]
+
+[node name="support2" type="Sprite2D" unique_id=1019203537]
+position = Vector2(0, 47.999996)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_fx54p")
