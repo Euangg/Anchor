@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://be3j0yuftyc7i"]
+
+[ext_resource type="Script" uid="uid://36mdep40kjt1" path="res://0_level/0_enemy/second_generation.gd" id="1_x3xgl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkqoe"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_fyldj"]
+resource_name = "idle"
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_yfnm4"]
+resource_name = "pre_atk"
+length = 0.5
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aduis"]
+_data = {
+&"idle": SubResource("Animation_fyldj"),
+&"pre_atk": SubResource("Animation_yfnm4")
+}
+
+[node name="SecondGeneration" type="RigidBody2D" unique_id=1617407134]
+collision_layer = 288
+collision_mask = 5
+mass = 0.001
+gravity_scale = 0.0
+linear_damp_mode = 1
+script = ExtResource("1_x3xgl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=657309060]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_vkqoe")
+
+[node name="Graphic" type="Node2D" parent="." unique_id=1438314561]
+
+[node name="RayCast2D" type="RayCast2D" parent="Graphic" unique_id=1602096578]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+target_position = Vector2(128, 0)
+collision_mask = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=810308884]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_aduis")
+autoplay = &"idle"
+
+[node name="Timer" type="Timer" parent="." unique_id=1741519023]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

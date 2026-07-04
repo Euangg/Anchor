@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://buuov65umdikr"]
+
+[ext_resource type="Script" uid="uid://c03d0m2cbwq5o" path="res://0_player/player_2.gd" id="1_2jxnv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jxnv"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jf684"]
+
+[node name="Player2" type="RigidBody2D" unique_id=90076252]
+collision_layer = 16
+lock_rotation = true
+script = ExtResource("1_2jxnv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=833654954]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_2jxnv")
+
+[node name="Hand" type="Node2D" parent="." unique_id=832134592]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand" unique_id=1892317967]
+position = Vector2(21, 0)
+shape = SubResource("CircleShape2D_jf684")

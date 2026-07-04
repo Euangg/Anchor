@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_back:
-		var vec=master.global_position-global_position
+		var vec=master.hand.global_position-global_position
 		velocity=vec.normalized()*back_speed
 	else:
 		var distance_square=global_position.distance_squared_to(master.global_position)
@@ -41,8 +41,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		else:back()
 	if body.get_collision_layer_value(5):
 		if is_back:
-			var player:Player=body
+			var player:Node2D=body
 			player.last_hook=null
+			#player.set_deferred("freeze",false)
 			queue_free()
-	
+	if body.get_collision_layer_value(6):
+		var enemy:Entity=body
+		enemy.queue_free()
+		back()
 	

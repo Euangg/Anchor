@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://coqt65474ojwr"]
+
+[ext_resource type="Script" uid="uid://cpvicf43i3adu" path="res://0_level/0_enemy/laser.gd" id="1_ki8aa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkqoe"]
+size = Vector2(1288, 20)
+
+[node name="Laser" type="Node2D" unique_id=1475021736]
+script = ExtResource("1_ki8aa")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1000189539]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=790788678]
+position = Vector2(644, 0)
+shape = SubResource("RectangleShape2D_vkqoe")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Timer" type="Timer" parent="." unique_id=490741394]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
