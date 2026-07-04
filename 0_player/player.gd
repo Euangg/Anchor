@@ -5,11 +5,12 @@ const HOOK = preload("uid://cu87ycytrkccp")
 const gravity:float=10000
 var last_hook:Hook=null
 var dir_hand:Vector2=Vector2.ZERO
+var drag_mode_once:bool=false
+var is_dragging:bool=false
 
 func _draw() -> void:
 	draw_circle(%Hand.position,Hook.max_distance,Color.RED,false,-1)
 	if last_hook:draw_line(Vector2(0,0),last_hook.position-position,Color.REBECCA_PURPLE,10)
-	
 
 func _physics_process(delta: float) -> void:
 	queue_redraw()
@@ -27,8 +28,11 @@ func _physics_process(delta: float) -> void:
 	velocity=input*500
 	velocity.y+=gravity*delta
 	
+	if Input.is_action_just_pressed("tab"):drag_mode_once=!drag_mode_once
+	
 	if Input.is_action_just_pressed("mouse_left"):
 		if last_hook:
+			is_dragging=false
 			last_hook.back()
 		else:
 			var h:Hook=HOOK.instantiate()
@@ -38,11 +42,20 @@ func _physics_process(delta: float) -> void:
 			add_sibling(h)
 			last_hook=h
 			FmodServer.play_one_shot("event:/General/Click")
-		
-	if Input.is_action_pressed("mouse_right"):
-		if last_hook and (last_hook.velocity.is_zero_approx()):
-			var vec_hook_hand:Vector2=last_hook.global_position-%Hand.global_position
-			if vec_hook_hand.length_squared()<=100:velocity=Vector2.ZERO
-			else:velocity+=vec_hook_hand.normalized()*60000*delta
+	
+	if drag_mode_once:
+		if Input.is_action_just_pressed("mouse_right"):
+			if is_dragging:is_dragging=false
+			else:
+				if last_hook and (last_hook.velocity.is_zero_approx()):is_dragging=true
+		if is_dragging:drag(delta)
+	else:
+		if Input.is_action_pressed("mouse_right"):drag(delta)
 			
 	move_and_slide()
+
+func drag(delta):
+	if last_hook and (last_hook.velocity.is_zero_approx()):
+		var vec_hook_hand:Vector2=last_hook.global_position-%Hand.global_position
+		if vec_hook_hand.length_squared()<=100:velocity=Vector2.ZERO
+		else:velocity+=vec_hook_hand.normalized()*60000*delta
