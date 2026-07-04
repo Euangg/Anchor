@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 			h.master=self
 			add_sibling(h)
 			last_hook=h
+			FmodServer.play_one_shot("event:/General/Click")
 		
 	if Input.is_action_pressed("mouse_right"):
 		if last_hook and (last_hook.velocity.is_zero_approx()):

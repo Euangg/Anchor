@@ -22,23 +22,26 @@ func _physics_process(delta: float) -> void:
 	
 func back():
 	is_back=true
+	%Area2D.set_collision_mask_value(1,false)
 	%Area2D.set_collision_mask_value(5,true)
 	%Area2D.set_collision_mask_value(9,false)
 
-
-func hit():
+func bite():
 	velocity=Vector2.ZERO
 	if %RayCast2D.is_colliding():
 		position=%RayCast2D.get_collision_point()
-		
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	hit()
-	
+	bite()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	hit()
-	if is_back:
-		var player:Player=body
-		player.last_hook=null
-		queue_free()
+	if body.get_collision_layer_value(1):
+		if body.get_collision_layer_value(9):bite()
+		else:back()
+	if body.get_collision_layer_value(5):
+		if is_back:
+			var player:Player=body
+			player.last_hook=null
+			queue_free()
+	
+	

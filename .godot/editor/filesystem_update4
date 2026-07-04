@@ -1,1 +1,8 @@
 res://0_level/level_1.tscn
+res://0_player/hook.tscn
+res://0_player/hook.gd
+res://0_utils/Global.tscn
+res://0_utils/global.tscn
+res://0_utils/global.gd
+res://0_player/player.tscn
+res://0_player/player.gd
