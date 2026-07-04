@@ -1,9 +1,27 @@
 [gd_scene format=3 uid="uid://q5qyyo3ab2dv"]
 
 [ext_resource type="Script" uid="uid://c3okydvs53deq" path="res://0_level/0_enemy/first_generation.gd" id="1_fyldj"]
+[ext_resource type="Texture2D" uid="uid://bsw0y0xqtf46q" path="res://0_level/0_enemy/dustbin1.png" id="2_aduis"]
+[ext_resource type="Texture2D" uid="uid://ddb83okqhx2wg" path="res://0_level/0_enemy/dustbin2.png" id="3_grv20"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkqoe"]
-size = Vector2(32, 32)
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkqoe"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aduis")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_grv20")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 16.0
+}]
 
 [sub_resource type="Animation" id="Animation_fyldj"]
 resource_name = "idle"
@@ -34,24 +52,42 @@ _data = {
 &"pre_atk": SubResource("Animation_yfnm4")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkqoe"]
+size = Vector2(32, 82)
+
 [node name="FirstGeneration" type="RigidBody2D" unique_id=1617407134]
 collision_layer = 288
 collision_mask = 5
 script = ExtResource("1_fyldj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=657309060]
-position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_vkqoe")
-
 [node name="Graphic" type="Node2D" parent="." unique_id=1438314561]
 
 [node name="RayCast2D" type="RayCast2D" parent="Graphic" unique_id=1602096578]
 unique_name_in_owner = true
-position = Vector2(0, -16)
-target_position = Vector2(128, 0)
-collision_mask = 16
+position = Vector2(0, -60)
+target_position = Vector2(300, 0)
+collision_mask = 17
+
+[node name="RayCastWall" type="RayCast2D" parent="Graphic/RayCast2D" unique_id=2024250184]
+unique_name_in_owner = true
+target_position = Vector2(1500, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphic" unique_id=1828163157]
+position = Vector2(0, -41)
+scale = Vector2(0.12, 0.12)
+sprite_frames = SubResource("SpriteFrames_vkqoe")
+animation = &"idle"
+frame_progress = 0.2012109
+flip_h = true
+
+[node name="MarkerBoom" type="Marker2D" parent="Graphic" unique_id=1033459901]
+position = Vector2(0, -61)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=810308884]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_aduis")
 autoplay = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=657309060]
+position = Vector2(0, -41)
+shape = SubResource("RectangleShape2D_vkqoe")
