@@ -887,11 +887,6 @@ texture = ExtResource("17_ruy27")
 position = Vector2(936, -576)
 script = ExtResource("18_po1a2")
 
-[node name="RopeLine" type="Line2D" parent="controlhook2" unique_id=1380787989]
-points = PackedVector2Array(0, 144, 0, -56)
-width = 6.0
-default_color = Color(0.24, 0.24, 0.24, 1)
-
 [node name="HookTrigger" parent="controlhook2" unique_id=1966985546 instance=ExtResource("10_6arim")]
 position = Vector2(296, 0)
 
