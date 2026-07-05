@@ -19,6 +19,17 @@ enum State{NULL,
 var current_state:State=State.NULL
 
 @onready var hand: Node2D = $Hand
+@onready var camera: Camera2D = get_node_or_null("Camera2D")
+
+@export var camera_follow_offset:Vector2=Vector2(0,-180)
+@export var camera_follow_zoom:Vector2=Vector2(3,3)
+@export var camera_high_area_y:float=-160
+@export var camera_high_area_min_x:float=640
+@export var camera_high_area_zoom:Vector2=Vector2(1.5,1.5)
+@export var camera_fixed_trigger_x:float=-2670
+@export var camera_fixed_position:Vector2=Vector2(-3072,264)
+@export var camera_fixed_zoom:Vector2=Vector2(0.7,0.7)
+@export var camera_transition_speed:float=4.0
 
 const gravity:float=1000
 var last_hook:Hook=null
@@ -34,7 +45,15 @@ func _draw() -> void:
 	draw_circle(hand.position,Hook.max_distance,Color.RED,false,-1)
 	if last_hook:draw_line(hand.position,last_hook.position-position,Color.REBECCA_PURPLE,10)
 
-func _process(delta: float) -> void:queue_redraw()
+func _ready() -> void:
+	if camera:
+		camera.position=camera_follow_offset
+		camera.zoom=camera_follow_zoom
+		camera.make_current()
+
+func _process(delta: float) -> void:
+	update_camera(delta)
+	queue_redraw()
 
 
 func _physics_process(delta: float) -> void:
@@ -170,6 +189,20 @@ func _physics_process(delta: float) -> void:
 func start_drag():
 	is_dragging=true
 	FmodServer.play_one_shot("event:/SFX/HOOK/FLYING")
+
+func update_camera(delta:float):
+	if not camera:return
+	if not camera.is_current():camera.make_current()
+	var target_position:=global_position+camera_follow_offset
+	var target_zoom:=camera_follow_zoom
+	if global_position.y<=camera_high_area_y and global_position.x>camera_high_area_min_x:
+		target_zoom=camera_high_area_zoom
+	if global_position.x<camera_fixed_trigger_x:
+		target_position=camera_fixed_position
+		target_zoom=camera_fixed_zoom
+	var weight:=1.0-exp(-camera_transition_speed*delta)
+	camera.global_position=camera.global_position.lerp(target_position,weight)
+	camera.zoom=camera.zoom.lerp(target_zoom,weight)
 
 func show_aim():
 	%Arrow.visible=true

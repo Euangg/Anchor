@@ -1,7 +1,7 @@
 class_name Hook
 extends Node2D
 
-const max_distance:float=800
+const max_distance:float=600
 const back_speed:float=1800
 
 var velocity:Vector2
