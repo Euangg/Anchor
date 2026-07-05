@@ -84,6 +84,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			queue_free()
 	if body.get_collision_layer_value(6):
 		var enemy:Entity=body
-		enemy.queue_free()
+		enemy.die_leave_effect(Entity.BOOM)
 		back()
 	

@@ -28,6 +28,7 @@ func fmod_switch_bgm(parameter:String):
 
 const UI_THEME = ("uid://br8cveyx7jnbe")
 const UI_MAIN_MENU = ("uid://by742c56fpp4g")
+const UI_INTRO = ("uid://ba67exr8li7ul")
 const UI_PLAY = ("uid://v8tkkjyl8vhi")
 const UI_ED = ("uid://cticoewlc4hel")
 

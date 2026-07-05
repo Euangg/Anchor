@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_button_start_pressed() -> void:
-	Global.switch_ui(Global.UI_PLAY)
+	Global.switch_ui(Global.UI_INTRO)
 	Global.fmod_switch_bgm("1")
 
 
