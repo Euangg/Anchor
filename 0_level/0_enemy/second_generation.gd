@@ -23,6 +23,7 @@ func shoot():
 	l.scale.x=direction*sss
 	l.global_position=%RayCast2D.global_position
 	add_sibling(l)
+	FmodServer.play_one_shot("event:/SFX/Monster/lazer")
 
 func stop_move():
 	last_dir=sign(linear_velocity.y)

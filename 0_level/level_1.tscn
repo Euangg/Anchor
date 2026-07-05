@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://bi1vdn0vuuvxe" path="res://0_level/_0019_图层-68.png" id="36_4nx8q"]
 [ext_resource type="Texture2D" uid="uid://d4gh6fh1lyacw" path="res://0_level/picture/lift/left.png" id="37_cmen2"]
 [ext_resource type="Texture2D" uid="uid://b21ptdavawp1y" path="res://0_level/picture/lift/right.png" id="38_xlo8n"]
+[ext_resource type="PackedScene" uid="uid://b3itt4ui5qap8" path="res://0_level/0_prefab/pass.tscn" id="41_xlo8n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11vbw"]
 size = Vector2(20, 288)
@@ -127,6 +128,9 @@ size = Vector2(16, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5rgr"]
 size = Vector2(120, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqk4g"]
+size = Vector2(46, 73)
 
 [node name="Level1" type="Node2D" unique_id=1600844090]
 
@@ -1574,6 +1578,13 @@ position = Vector2(1160, -5616)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("38_xlo8n")
 
+[node name="Pass" parent="." unique_id=1645658042 instance=ExtResource("41_xlo8n")]
+position = Vector2(1026, -5587)
+
+[node name="CollisionShape2D" parent="Pass/Area2D" parent_id_path=PackedInt32Array(1645658042, 1721998351) index="0" unique_id=1655261694]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_eqk4g")
+
 [connection signal="trigger" from="controldoor/HookTrigger" to="controldoor" method="_on_hook_trigger_trigger"]
 [connection signal="trigger" from="controldoor5/HookTrigger" to="controldoor5" method="_on_hook_trigger_trigger"]
 [connection signal="trigger" from="controldoor2/HookTrigger" to="controldoor2" method="_on_hook_trigger_trigger"]
@@ -1589,3 +1600,4 @@ texture = ExtResource("38_xlo8n")
 [editable path="controldoor3/Juanlianmen"]
 [editable path="controldoor4/Juanlianmen"]
 [editable path="Juanlianmen"]
+[editable path="Pass"]

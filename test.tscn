@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://be3j0yuftyc7i" path="res://0_level/0_enemy/second_generation.tscn" id="4_ppyta"]
 [ext_resource type="PackedScene" uid="uid://hu8qqtpjn67t" path="res://0_level/0_prefab/hook_trigger.tscn" id="6_vbegm"]
 [ext_resource type="PackedScene" uid="uid://btpskwssfm5sd" path="res://0_level/picture/juanlianmen/juanlianmen.tscn" id="7_ehkex"]
+[ext_resource type="PackedScene" uid="uid://b3itt4ui5qap8" path="res://0_level/0_prefab/pass.tscn" id="7_vbegm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkqoe"]
 size = Vector2(1924, 163)
@@ -15,6 +16,9 @@ size = Vector2(210, 224)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g14j6"]
 size = Vector2(25, 1087.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehkex"]
+size = Vector2(66, 82)
 
 [node name="Test" type="Node2D" unique_id=1831377270]
 script = ExtResource("1_8uh7m")
@@ -62,5 +66,14 @@ position = Vector2(1416, 880)
 [node name="SecondGeneration" parent="." unique_id=986624666 instance=ExtResource("4_ppyta")]
 position = Vector2(944, 856)
 
+[node name="Pass" parent="." unique_id=1645658042 instance=ExtResource("7_vbegm")]
+position = Vector2(1752, 808)
+
+[node name="CollisionShape2D" parent="Pass/Area2D" parent_id_path=PackedInt32Array(1645658042, 1721998351) index="0" unique_id=1655261694]
+position = Vector2(-48, 12)
+shape = SubResource("RectangleShape2D_ehkex")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="trigger" from="HookTrigger" to="." method="_on_hook_trigger_trigger"]
+
+[editable path="Pass"]

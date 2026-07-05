@@ -5,6 +5,7 @@ var time_acc=0
 var logo_shader:ShaderMaterial
 func _ready() -> void:
 	logo_shader=%Logo.material
+	Global.fmod_switch_bgm("2")
 	
 
 func _physics_process(delta: float) -> void:

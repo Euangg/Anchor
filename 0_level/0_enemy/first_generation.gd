@@ -20,6 +20,7 @@ func shoot():
 	l.scale.x=direction*sss
 	l.global_position=%RayCast2D.global_position
 	add_sibling(l)
+	FmodServer.play_one_shot("event:/SFX/Monster/lazer")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:direction*=-1

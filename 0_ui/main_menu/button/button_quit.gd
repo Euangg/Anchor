@@ -13,6 +13,7 @@ func _on_area_2d_mouse_entered() -> void:
 	%Sprite2D.texture=X_2_O
 	%Sprite2D2.texture=MAIN_02_QUIT_O
 	mouse_on=true
+	FmodServer.play_one_shot("event:/UI/hover")
 
 func _on_area_2d_mouse_exited() -> void:
 	%Sprite2D.texture=X_2_C
@@ -20,4 +21,6 @@ func _on_area_2d_mouse_exited() -> void:
 	mouse_on=false
 
 func _physics_process(delta: float) -> void:
-	if mouse_on and Input.is_action_just_pressed("mouse_left"):pressed.emit()
+	if mouse_on and Input.is_action_just_pressed("mouse_left"):
+		FmodServer.play_one_shot("event:/UI/click")
+		pressed.emit()
