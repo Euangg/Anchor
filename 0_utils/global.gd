@@ -11,6 +11,10 @@ func _ready() -> void:
 const UI_THEME = ("uid://br8cveyx7jnbe")
 const UI_MAIN_MENU = ("uid://by742c56fpp4g")
 const UI_PLAY = ("uid://v8tkkjyl8vhi")
+const UI_ED = ("uid://cticoewlc4hel")
 
 func switch_ui(path_scene):
 	get_tree().call_deferred("change_scene_to_file",path_scene)
+
+
+var is_aim:bool=false
