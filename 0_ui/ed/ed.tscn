@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cticoewlc4hel"]
+
+[ext_resource type="Script" uid="uid://n0p8gjaqxci5" path="res://0_ui/ed/ed.gd" id="1_2w143"]
+[ext_resource type="Texture2D" uid="uid://cqyu7vubkhb7l" path="res://0_ui/ed/ed (1).png" id="1_bttdu"]
+[ext_resource type="Texture2D" uid="uid://bkmjix4xqw7au" path="res://0_ui/ed/edsilk.png" id="2_wktoo"]
+[ext_resource type="Texture2D" uid="uid://br73w4gqb3u7v" path="res://0_ui/ed/theend.png" id="3_2w143"]
+
+[node name="Ed" type="Control" unique_id=1500983660]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2w143")
+
+[node name="Ed(1)" type="Sprite2D" parent="." unique_id=1959843630]
+texture = ExtResource("1_bttdu")
+centered = false
+
+[node name="Edsilk" type="Sprite2D" parent="." unique_id=458585458]
+position = Vector2(963, 518)
+texture = ExtResource("2_wktoo")
+
+[node name="Theend" type="Sprite2D" parent="." unique_id=1854731181]
+position = Vector2(1387, 469)
+texture = ExtResource("3_2w143")

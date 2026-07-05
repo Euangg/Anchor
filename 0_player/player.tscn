@@ -439,8 +439,7 @@ scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_vkqoe")
 animation = &"idle"
 autoplay = "idle"
-frame = 6
-frame_progress = 0.12203614
+speed_scale = 5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1135190295]
 unique_name_in_owner = true

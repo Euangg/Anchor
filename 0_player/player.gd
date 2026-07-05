@@ -56,6 +56,8 @@ func _physics_process(delta: float) -> void:
 	var input=Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	if input.is_zero_approx():pass
 	else:velocity=input*500
+	if Input.is_action_just_pressed("num_0"):Global.switch_ui(Global.UI_ED)
+	
 	#手动挡移动
 	#if Input.is_action_just_pressed("tab"):drag_mode_once=!drag_mode_once
 	#if Input.is_action_just_pressed("q"):auto_drag=!auto_drag
@@ -173,13 +175,15 @@ func show_aim():
 	%Arrow.visible=true
 	%Ring.visible=true
 	FmodServer.play_one_shot("event:/SFX/AIMING/AIM_IN")
-	Engine.time_scale=0.1
+	Engine.time_scale=0.15
+	Global.is_aim=true
 
 func hide_aim():
 	%Arrow.visible=false
 	%Ring.visible=false
 	FmodServer.play_one_shot("event:/SFX/AIMING/AIM_OUT")
 	Engine.time_scale=1
+	Global.is_aim=false
 
 func drag(delta):
 	if last_hook and (last_hook.velocity.is_zero_approx()):
