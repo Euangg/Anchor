@@ -1,4 +1,6 @@
 extends Node2D
 
 
-func open():%AnimationPlayer.play("open")
+func open():
+	print("opened")
+	%AnimationPlayer.play("open")

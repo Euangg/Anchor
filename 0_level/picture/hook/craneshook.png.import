@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daigx0vha3pns"
-path="res://.godot/imported/_0008_图层-58.png-faa43d3fe44b525e9d400ef1bbbab174.ctex"
+uid="uid://o41u8e6bdlh"
+path="res://.godot/imported/craneshook.png-75931a07830b4ab528c43f7ad27d8c4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_level/_0008_图层-58.png"
-dest_files=["res://.godot/imported/_0008_图层-58.png-faa43d3fe44b525e9d400ef1bbbab174.ctex"]
+source_file="res://0_level/picture/hook/craneshook.png"
+dest_files=["res://.godot/imported/craneshook.png-75931a07830b4ab528c43f7ad27d8c4b.ctex"]
 
 [params]
 

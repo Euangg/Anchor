@@ -4,14 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://bv4pq7nohkhkg" path="res://0_level/_0014_图层-88.png" id="2_vma2c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ysg8"]
-size = Vector2(16, 26)
+size = Vector2(16, 24)
 
 [node name="HookTrigger" type="Node2D" unique_id=1698414225]
 script = ExtResource("1_ewr5b")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1563062727]
 unique_name_in_owner = true
-scale = Vector2(0.3, 0.3)
+position = Vector2(8, 12.000001)
+scale = Vector2(0.2857143, 0.2857143)
 texture = ExtResource("2_vma2c")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1263888568]
@@ -19,6 +20,7 @@ collision_layer = 2048
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=781823895]
+position = Vector2(8, 12)
 shape = SubResource("RectangleShape2D_3ysg8")
 
 [connection signal="trigger" from="." to="." method="_on_trigger"]

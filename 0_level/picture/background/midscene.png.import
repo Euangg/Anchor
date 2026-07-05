@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwiqsosnd8vpu"
-path="res://.godot/imported/_0007_图层-80.png-da0a232f145014e03d9440359aea06cc.ctex"
+uid="uid://cjr3qr5ntt43s"
+path="res://.godot/imported/midscene.png-9a59b855b08c6e1bab9c7a05f73bf17b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_level/_0007_图层-80.png"
-dest_files=["res://.godot/imported/_0007_图层-80.png-da0a232f145014e03d9440359aea06cc.ctex"]
+source_file="res://0_level/picture/background/midscene.png"
+dest_files=["res://.godot/imported/midscene.png-9a59b855b08c6e1bab9c7a05f73bf17b.ctex"]
 
 [params]
 

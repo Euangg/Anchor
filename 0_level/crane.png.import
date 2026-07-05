@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i4gdq141b17c"
-path="res://.godot/imported/_0013_图层-62.png-7da980497eabb6460ac9f0c72335ab74.ctex"
+uid="uid://cva86vrdmfejo"
+path="res://.godot/imported/crane.png-889be2da1fdafb7f4cf9d2cea0179fa8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_level/_0013_图层-62.png"
-dest_files=["res://.godot/imported/_0013_图层-62.png-7da980497eabb6460ac9f0c72335ab74.ctex"]
+source_file="res://0_level/crane.png"
+dest_files=["res://.godot/imported/crane.png-889be2da1fdafb7f4cf9d2cea0179fa8.ctex"]
 
 [params]
 
