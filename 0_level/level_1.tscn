@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://v8tkkjyl8vhi"]
 
 [ext_resource type="Texture2D" uid="uid://crec32vdgcwyx" path="res://0_level/picture/wall/control.png" id="1_eqk4g"]
+[ext_resource type="Script" uid="uid://b862niip4scig" path="res://0_level/level_1.gd" id="1_fdbr6"]
 [ext_resource type="Texture2D" uid="uid://cd3nmce3wdhjp" path="res://0_level/picture/wall/liftwall.png" id="1_g746t"]
 [ext_resource type="Texture2D" uid="uid://dsyjl5gi5b2cs" path="res://0_level/picture/background/background.png" id="1_k0vco"]
 [ext_resource type="PackedScene" uid="uid://be2mv4inn4tyd" path="res://0_player/player.tscn" id="1_sqi7a"]
@@ -46,17 +47,21 @@
 [ext_resource type="PackedScene" uid="uid://b3itt4ui5qap8" path="res://0_level/0_prefab/pass.tscn" id="41_xlo8n"]
 [ext_resource type="Texture2D" uid="uid://dowci2l0x71a3" path="res://0_level/picture/ground/breakground.png" id="43_s0wsh"]
 [ext_resource type="Texture2D" uid="uid://175tjmb2pspx" path="res://0_level/picture/trap/_0003_图层-98.png" id="46_eapwe"]
+[ext_resource type="Shader" uid="uid://clg1rhxnjcn3w" path="res://0_player/glow.gdshader" id="47_2qtcc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_11vbw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qtcc"]
 size = Vector2(20, 288)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_13xce"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sylux"]
 size = Vector2(20, 288)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uckcv"]
+size = Vector2(12.855804, 107.72835)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yno45"]
 size = Vector2(12.855804, 107.72835)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_po1a2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvc2r"]
 size = Vector2(20, 288)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nx8q"]
@@ -72,7 +77,7 @@ size = Vector2(20, 288)
 size = Vector2(960, 1696)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ysg8"]
-size = Vector2(2360, 32)
+size = Vector2(2422, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1wtjs"]
 size = Vector2(1152, 32)
@@ -122,12 +127,6 @@ size = Vector2(32, 6400)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdbr6"]
 size = Vector2(32, 648)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oran0"]
-size = Vector2(54.51072, 30.052055)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cu1cb"]
-size = Vector2(23.798351, 15.026047)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grle0"]
 size = Vector2(16, 24)
 
@@ -140,7 +139,29 @@ size = Vector2(120, 150)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqk4g"]
 size = Vector2(46, 73)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d762t"]
+shader = ExtResource("47_2qtcc")
+shader_parameter/outline_color = Color(1, 0, 0, 1)
+shader_parameter/outline_width = 1.0
+shader_parameter/sample_count = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_grv20"]
+shader = ExtResource("47_2qtcc")
+shader_parameter/outline_color = Color(1, 0, 0, 1)
+shader_parameter/outline_width = 1.0
+shader_parameter/sample_count = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oran0"]
+size = Vector2(54.51072, 30.052055)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkqoe"]
+size = Vector2(6509.5, 607)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cu1cb"]
+size = Vector2(23.798351, 15.026047)
+
 [node name="Level1" type="Node2D" unique_id=1600844090]
+script = ExtResource("1_fdbr6")
 
 [node name="Control" type="Sprite2D" parent="." unique_id=1618586380]
 position = Vector2(576, 624)
@@ -452,8 +473,12 @@ position = Vector2(-2112, 304)
 position = Vector2(-2496, 304)
 
 [node name="Player" parent="." unique_id=810710570 instance=ExtResource("1_sqi7a")]
+unique_name_in_owner = true
 z_index = 5
 position = Vector2(495, 392)
+collision_mask = 3
+camera_follow_zoom = Vector2(2, 2)
+camera_high_area_y = -100.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1938077235]
 position = Vector2(0, -180)
@@ -501,7 +526,7 @@ position = Vector2(-1536, 560)
 position = Vector2(-1584, 688)
 
 [node name="CollisionShape2D" parent="controldoor/Juanlianmen/StaticBody2D" parent_id_path=PackedInt32Array(1072656794, 22638293) index="0" unique_id=152711196]
-shape = SubResource("RectangleShape2D_11vbw")
+shape = SubResource("RectangleShape2D_2qtcc")
 
 [node name="controldoor5" type="Node2D" parent="." unique_id=1528197202]
 position = Vector2(-1088, -880)
@@ -514,7 +539,7 @@ position = Vector2(-1536, 560)
 position = Vector2(-1584, 688)
 
 [node name="CollisionShape2D" parent="controldoor5/Juanlianmen/StaticBody2D" parent_id_path=PackedInt32Array(1064016966, 22638293) index="0" unique_id=152711196]
-shape = SubResource("RectangleShape2D_13xce")
+shape = SubResource("RectangleShape2D_sylux")
 
 [node name="openedjuanlianmen" type="Sprite2D" parent="." unique_id=1184011874]
 position = Vector2(-2672, 624)
@@ -528,7 +553,7 @@ scale = Vector2(0.35, 0.35)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=164914471]
 position = Vector2(0, -57.142944)
 scale = Vector2(7.111836, 1.0608705)
-shape = SubResource("RectangleShape2D_yno45")
+shape = SubResource("RectangleShape2D_uckcv")
 
 [node name="openedjuanlianmen2" type="Sprite2D" parent="." unique_id=665463636]
 position = Vector2(-2659.7, -18.25)
@@ -555,7 +580,7 @@ position = Vector2(-1224, 880)
 position = Vector2(-1144, 1008)
 
 [node name="CollisionShape2D" parent="controldoor2/Juanlianmen/StaticBody2D" parent_id_path=PackedInt32Array(485682179, 22638293) index="0" unique_id=152711196]
-shape = SubResource("RectangleShape2D_po1a2")
+shape = SubResource("RectangleShape2D_mvc2r")
 
 [node name="controldoor3" type="Node2D" parent="." unique_id=2095948804]
 position = Vector2(1144, -240)
@@ -597,7 +622,7 @@ position = Vector2(-4000, 976)
 shape = SubResource("RectangleShape2D_dn38a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment" unique_id=1849714240]
-position = Vector2(-472, 464)
+position = Vector2(-441, 464)
 shape = SubResource("RectangleShape2D_3ysg8")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Environment" unique_id=809764268]
@@ -639,7 +664,7 @@ scale = Vector2(4.9898434, 1.5972295)
 shape = SubResource("RectangleShape2D_fwrwb")
 
 [node name="CollisionShape2D33" type="CollisionShape2D" parent="Environment" unique_id=470877793]
-position = Vector2(384, 752.00006)
+position = Vector2(629, 752.00006)
 scale = Vector2(4.9898434, 1.5972295)
 shape = SubResource("RectangleShape2D_fwrwb")
 
@@ -708,21 +733,6 @@ shape = SubResource("RectangleShape2D_8iqpk")
 position = Vector2(-1463.9999, 720)
 scale = Vector2(4.9898434, 1.5972295)
 shape = SubResource("RectangleShape2D_8iqpk")
-
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="Environment" unique_id=1510882816]
-position = Vector2(-1728, 744)
-scale = Vector2(4.9898434, 1.5972295)
-shape = SubResource("RectangleShape2D_oran0")
-
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="Environment" unique_id=1081404255]
-position = Vector2(-1728, 744)
-scale = Vector2(4.9898434, 1.5972295)
-shape = SubResource("RectangleShape2D_oran0")
-
-[node name="CollisionShape2D22" type="CollisionShape2D" parent="Environment" unique_id=1096387348]
-position = Vector2(-1447.9999, 436)
-scale = Vector2(4.9898434, 1.5972295)
-shape = SubResource("RectangleShape2D_cu1cb")
 
 [node name="Barrier1" type="Sprite2D" parent="Environment" unique_id=1902221127]
 position = Vector2(-960, 400)
@@ -855,7 +865,7 @@ position = Vector2(-2944, 80)
 position = Vector2(-3136, 272)
 script = ExtResource("10_wh43j")
 
-[node name="RopeLine" type="Line2D" parent="controlhook"]
+[node name="RopeLine" type="Line2D" parent="controlhook" unique_id=2142007166]
 points = PackedVector2Array(0, -704, 0, -56)
 width = 6.0
 default_color = Color(0.24, 0.24, 0.24, 1)
@@ -877,7 +887,7 @@ texture = ExtResource("17_ruy27")
 position = Vector2(936, -576)
 script = ExtResource("18_po1a2")
 
-[node name="RopeLine" type="Line2D" parent="controlhook2"]
+[node name="RopeLine" type="Line2D" parent="controlhook2" unique_id=1380787989]
 points = PackedVector2Array(0, 144, 0, -56)
 width = 6.0
 default_color = Color(0.24, 0.24, 0.24, 1)
@@ -1707,15 +1717,39 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("43_s0wsh")
 
 [node name="0003图层98" type="Sprite2D" parent="." unique_id=2058975170]
+material = SubResource("ShaderMaterial_d762t")
 position = Vector2(-1736, 744)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("46_eapwe")
 
 [node name="0003图层99" type="Sprite2D" parent="." unique_id=1352583183]
+material = SubResource("ShaderMaterial_grv20")
 position = Vector2(-1450, 437.00003)
 scale = Vector2(0.39999935, 0.39999935)
 texture = ExtResource("46_eapwe")
 
+[node name="Area2D" type="Area2D" parent="." unique_id=1053273687]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Area2D" unique_id=1081404255]
+position = Vector2(-1728, 744)
+scale = Vector2(4.9898434, 1.5972295)
+shape = SubResource("RectangleShape2D_oran0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=887053776]
+position = Vector2(-268.75, 1496)
+shape = SubResource("RectangleShape2D_vkqoe")
+
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="Area2D" unique_id=1096387348]
+position = Vector2(-1447.9999, 436)
+scale = Vector2(4.9898434, 1.5972295)
+shape = SubResource("RectangleShape2D_cu1cb")
+
+[node name="Timer" type="Timer" parent="." unique_id=1340410565]
+unique_name_in_owner = true
+
+[connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
 [connection signal="trigger" from="controldoor/HookTrigger" to="controldoor" method="_on_hook_trigger_trigger"]
 [connection signal="trigger" from="controldoor5/HookTrigger" to="controldoor5" method="_on_hook_trigger_trigger"]
 [connection signal="trigger" from="controldoor2/HookTrigger" to="controldoor2" method="_on_hook_trigger_trigger"]
@@ -1724,6 +1758,8 @@ texture = ExtResource("46_eapwe")
 [connection signal="trigger" from="controlhook/HookTrigger" to="controlhook" method="_on_hook_trigger_trigger"]
 [connection signal="trigger" from="controlhook2/HookTrigger" to="controlhook2" method="_on_hook_trigger_trigger"]
 [connection signal="timeout" from="controlhook2/Timer" to="controlhook2" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="controldoor/Juanlianmen"]
 [editable path="controldoor5/Juanlianmen"]

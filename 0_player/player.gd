@@ -42,7 +42,7 @@ var released:bool=false
 var auto_drag:bool=true
 
 func _draw() -> void:
-	draw_circle(hand.position,Hook.max_distance,Color.RED,false,-1)
+	#draw_circle(hand.position,Hook.max_distance,Color.RED,false,-1)
 	if last_hook:draw_line(hand.position,last_hook.position-position,Color.YELLOW,3)
 
 func _ready() -> void:

@@ -2,7 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c3okydvs53deq" path="res://0_level/0_enemy/first_generation.gd" id="1_fyldj"]
 [ext_resource type="Texture2D" uid="uid://bsw0y0xqtf46q" path="res://0_level/0_enemy/dustbin1.png" id="2_aduis"]
+[ext_resource type="Shader" uid="uid://clg1rhxnjcn3w" path="res://0_player/glow.gdshader" id="2_grv20"]
 [ext_resource type="Texture2D" uid="uid://ddb83okqhx2wg" path="res://0_level/0_enemy/dustbin2.png" id="3_grv20"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aduis"]
+shader = ExtResource("2_grv20")
+shader_parameter/outline_color = Color(1.3262677, 0, 0, 1)
+shader_parameter/outline_width = 8.0
+shader_parameter/sample_count = 32
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vkqoe"]
 animations = [{
@@ -89,6 +96,7 @@ unique_name_in_owner = true
 target_position = Vector2(1500, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphic" unique_id=1828163157]
+material = SubResource("ShaderMaterial_aduis")
 position = Vector2(0, -41)
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_vkqoe")
